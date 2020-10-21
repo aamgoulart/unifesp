@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Circuitos Digitais - Laboratório 05}
+\author{Amanda Goulart - 133569}
+\date{Outubro 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Problema}
+1) Implemente um gerador de números aleatórios para o sorteio do valor de dois dados de 1 a 6 que
+substituem os switches que geravam o valor de C. Para isso, utilize flip-flops com frequências de clock
+bem altas. Use frequências diferentes para cada bit para que os valores sejam independentes para cada
+bit. Você deve usar 3 bits por dado. Se o número sorteado for 0 ou 7, você deve inverter o primeiro bit.
+(Depois resolveremos isso melhor). Os dados devem mudar o valor enquanto um botão (button do
+panda) com rótulo "jogar" for pressionado. Quando o botão for desapertado, o valor deve ser fixado.
+Usando o mesmo botão "jogar", faça o sorteio aleatório de 2 bits para o valor a ser escolhido de D e um
+bit para o sinal de mais ou menos, substituindo os switches de entrada para eles.
+Todos os valores de C, D e o sinal de + ou - devem ser sorteados ao mesmo tempo, mas independentes
+uns dos outros.
+Acrescente ao circuito dois leds com labels "+" e "-" que devem indicar qual é a operação sorteada.
+\\
+2) Guarde os bits de A em flip-flops, substituindo os switches de valores de entrada para A. Crie um
+botão de "reset" que inicializa o valor de A com 63, representando o montante inicial do apostador.
+Depois de sortear os valores de C, D e a operação, aperte o botão de nome "realizar" que realiza a
+operação A = A +/- C * D. Obs. Veja o próximo item antes de fazer este.
+\\
+3) Implemente o sistema de ganho/perda acumulado dos sorteios. Use mais um flip-flop para guardar o
+valor da última jogada (00: ainda não jogou, 10: "+", 11: "-").
+Se a última jogada tiver sinal diferente da atual, nada deve ser mudado no valor de C * D, com k=1.
+Se a última jogada tiver o mesmo sinal da atual, então o valor de C * D deve ser multiplicado por k=2.
+Assim, a operação fica: A = A +/- k * C * D
+Use dois leds com rótulos "+" e "-" para indicar o sinal da última jogada.
+Obs: não esqueça de reiniciar os flip-flops do sinal da última jogada ao pressionar o botão de "reset".
+\subsection{Implementação}
+
+Para a operação de A = A +/- k * C * D, utilizei o registrador em paralelo com enable, usando flipflop tipo D, que foi explicado na aula 17 parte 5 e durante a ultima aula de sexta 02/10.
+
+Para os dados, utilizei o flipflop tipo T, com vários clock com frequências direferentes. 
+
+E para a implementação de soma/subtração com saída de 2 bits, utilizei um clock e um flipflop tipo T, com um bit negado e o outro não. 
+
+\end{document}

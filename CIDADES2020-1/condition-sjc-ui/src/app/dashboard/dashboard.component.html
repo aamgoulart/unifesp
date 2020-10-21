@@ -1,0 +1,89 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">coronavirus</i>
+                        </div>
+                        <p class="card-category">Casos confirmados</p>
+                        <h3 class="card-title">17989
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">warning</i>
+                        </div>
+                        <p class="card-category">Taxa de óbito</p>
+                        <h3 class="card-title">2,5%</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">trending_up</i>
+                        </div>
+                        <p class="card-category">Taxa de recuperação</p>
+                        <h3 class="card-title">86,8%</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">local_hospital</i>
+                        </div>
+                        <p class="card-category">Óbitos</p>
+                        <h3 class="card-title">444</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-chart">
+                    <div class="card-header card-header-warning">
+                        <!-- <app-chart [yAxis]="valueChart" [xAxis]="dateChart"></app-chart> -->
+                        <div class="ct-chart" id="dailySalesChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Crescimento de casos confirmados</h4>
+                        <p class="card-category">
+                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 2.8% </span> Aumento em relação aos últimos 7 dias.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-chart">
+                    <div class="card-header card-header-danger">
+                        <div class="ct-chart" id="websiteViewsChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Crescimento de óbitos</h4>
+                        <p class="card-category"> No dia 10/08/2020 tiveram 22 mortes</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-chart">
+                    <div class="card-header card-header-success">
+                        <div class="ct-chart" id="completedTasksChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Crescimento de casos recuperados</h4>
+                        <p class="card-category">Temos 15626 pessoas recuperadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

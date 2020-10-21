@@ -1,0 +1,61 @@
+# depslib dependency file v1.0
+1417006833 source:d:\pesquisa\publicações\livros\livro estutura de dados em c\códigos\projarvorellrb\arvorellrb.c
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreLLRB.h"
+
+1417005507 d:\pesquisa\publicações\livros\livro estutura de dados em c\códigos\projarvorellrb\arvorellrb.h
+
+1417005167 source:d:\pesquisa\publicações\livros\livro estutura de dados em c\códigos\projarvorellrb\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreLLRB.h"
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreAVL.h"
+
+1421576930 source:d:\andre\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projarvorellrb\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreLLRB.h"
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreAVL.h"
+
+1417001908 d:\andre\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projarvorellrb\arvorellrb.h
+
+1421518836 source:d:\andre\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projarvorellrb\arvorellrb.c
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreLLRB.h"
+
+1421580528 source:d:\projarvorellrb\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreLLRB.h"
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreAVL.h"
+
+1417005508 d:\projarvorellrb\arvorellrb.h
+
+1421580506 source:d:\projarvorellrb\arvorellrb.c
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreLLRB.h"
+
+1561399236 source:d:\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projarvorellrb\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreLLRB.h"
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreAVL.h"
+
+1417005508 d:\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projarvorellrb\arvorellrb.h
+
+1429187732 source:d:\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projarvorellrb\arvorellrb.c
+	<stdio.h>
+	<stdlib.h>
+	"ArvoreLLRB.h"
+

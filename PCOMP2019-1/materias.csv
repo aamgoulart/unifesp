@@ -1,0 +1,37 @@
+Nome da UC,Pre req 1,Pre req 2,Dependencias,Termo
+"Calculo em uma váriavel
+","
+",,0,2
+"Ciêcnia, tecnologia e sociedade",,,0,1
+"Ciêcnia, tecnologia, e ambiente",,,0,0
+Fenomenos mecânicos,,,0,0
+Fundamentos da biologia moderna,,,0,1
+Logica de programação,,,0,1
+Quimica Geral,,,0,2
+Algebra linear,Geometria Analitica,,0,1
+Algoritmos e estrutura de dados I,Logica de programação,,10,0
+Algoritmos e estrutura de dados II,Algoritmos e estrutura de dados I,,1,1
+Arq. e organização de computadores,Circuitos digitais ,,0,0
+Banco de dados,Algoritmos e estrutura de dados I,,0,0
+Cálculo em várias variaveis,"Calculo em uma váriavel
+",Geometria analitica,0,1
+Calculo númerico,"Calculo em uma váriavel
+",Geometria analitica,0,0
+Circuitos digitais ,,,1,1
+Compiladores,Linguagens formais e autômatos,,0,0
+Computação gráfica,Algoritmos e estrutura de dados I,,0,0
+Engenharia de software,Programação orientada a objetos,,0,0
+Geometria analitica,,,3,2
+Inteligencia artificial,Algoritmos e estrutura de dados I,,0,1
+Matemática discreta,,,3,0
+Linguagens formais e autômatos,Matemática discreta,Logica de programação,1,1
+Probabilidade e estatística,"Calculo em uma váriavel
+",,0,1
+Programação orientada a objetos,Algoritmos e estrutura de dados I,,3,0
+Projeto e análise de algoritimos,Matemática discreta,Algoritmos e estrutura de dados II,1,2
+Projeto orientado a objetos,Programação orientada a objetos,,0,1
+Redes de computadores,Programação orientada a objetos,,0,0
+Séries e equações diferenciais ordinárias,"Calculo em uma váriavel
+",,0,0
+Sistemas operacionais,Algoritmos e estrutura de dados I,,0,1
+Teoria dos grafos,Projeto e análise de algoritimos,,0,1

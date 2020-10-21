@@ -1,0 +1,2 @@
+# Projeto final - Banco de dados 2019.2
+O projeto consiste em um modelo de banco de dados para o aplicativo de reprodução de músicas Spotify. O banco contém dados das músicas, de seus respectivos artistas, cada um com sua gravadora, gêneros musicais, produtores e compositores e dos álbums. Além disso, também são armazenados no banco os dados dos usuários, do plano que utilizam, de suas playlists e a situação destas.

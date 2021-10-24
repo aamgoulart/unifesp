@@ -113,7 +113,7 @@ void desenho(){
 
 void mouseFunc(int botao, int estado, int x, int y){
      switch (botao){
-        case GLUT_LEFT_BUTTON:
+        case GLUT_RIGHT_BUTTON:
            if (estado == GLUT_DOWN){
               if(cont==0){
                  mouseX1=x;

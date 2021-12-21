@@ -20,12 +20,17 @@ int main(int argc, char **argv){
         printf("Use: %s <porta> <endereço server>\n", argv[0]);
     }
 
+    //SOCKET
+
 	clientSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if(clientSocket < 0){
 		printf("[-]Error in connection.\n");
 		exit(1);
 	}
 	printf("[+]Client Socket is created.\n");
+
+
+    //CONNECT
 
 	memset(&serverAddr, '\0', sizeof(serverAddr));
 	serverAddr.sin_family = AF_INET;
@@ -40,6 +45,7 @@ int main(int argc, char **argv){
 	printf("[+]Connected to Server.\n");
     
 	while(1){
+        // WRITE
 		printf("Client says: \t");
 		scanf("%s", &buffer[0]);
 		send(clientSocket, buffer, strlen(buffer), 0);
@@ -50,12 +56,15 @@ int main(int argc, char **argv){
 			exit(1);
 		}
 
+        // READ
 		if(recv(clientSocket, buffer, 1024, 0) < 0){
 			printf("[-]Error in receiving data.\n");
 		}else{
 			printf("Server says: \t%s\n", buffer);
 		}
 	}
+
+    close(clientSocket);
 
 	return 0;
 }

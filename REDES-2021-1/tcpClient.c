@@ -7,6 +7,13 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+#define ERROR_CONNECTION "Error on try connect on server\n"
+#define SUCCESS_CONNETION "Conect on server"
+#define ERROR_SOCKET "Error on create socker"
+#define SUCESS_SOCKET "Socket create"
+#define SUCESS_DISCONECT "Bye"
+#define ERROR_DATA "Error on recieve data"
+
 
 int main(int argc, char **argv){
 
@@ -14,9 +21,7 @@ int main(int argc, char **argv){
 	struct sockaddr_in serverAddr;
 	char buffer[1024], port, address;
 
-    // scanf("%s %s\n", address, port);
-
-    if(argc != 2) { 
+    if(argc != 3) { 
         printf("Use: %s <porta> <endereço server>\n", argv[0]);
     }
 
@@ -24,10 +29,10 @@ int main(int argc, char **argv){
 
 	clientSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if(clientSocket < 0){
-		printf("[-]Error in connection.\n");
+        perror(ERROR_SOCKET);
 		exit(1);
 	}
-	printf("[+]Client Socket is created.\n");
+	printf(SUCESS_SOCKET);
 
 
     //CONNECT
@@ -39,10 +44,10 @@ int main(int argc, char **argv){
 
 	ret = connect(clientSocket, (struct sockaddr*)&serverAddr, sizeof(serverAddr));
 	if(ret < 0){
-		printf("[-]Error in connection.\n");
+        perror(ERROR_CONNECTION);
 		exit(1);
 	}
-	printf("[+]Connected to Server.\n");
+	printf(SUCCESS_CONNETION);
     
 	while(1){
         // WRITE
@@ -52,13 +57,13 @@ int main(int argc, char **argv){
 
 		if(strcmp(buffer, "exit") == 0){
 			close(clientSocket);
-			printf("[-]Disconnected from server.\n");
+			printf(SUCCESS_CONNETION);
 			exit(1);
 		}
 
         // READ
 		if(recv(clientSocket, buffer, 1024, 0) < 0){
-			printf("[-]Error in receiving data.\n");
+			printf(ERROR_DATA);
 		}else{
 			printf("Server says: \t%s\n", buffer);
 		}

@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include<netdb.h>	//hostent
+#include <netdb.h>	
 
 #define ERROR_CONNECTION "Error on try connect on client\n"
 #define SUCCESS_CONNETION "Conect on client\n"
@@ -17,6 +17,7 @@
 #define ERROR_BIND "Error on bind\n"
 #define SUCESS_BIND "Sucess bind\n"
 #define WAITING_CLIENTE "Waiting response for client\n"
+#define ERROR_CONVERT_HOSTNAME "Error on convert hostname to ip address"
 
 int hostname_to_ip(char * hostname , char* ip);
 
@@ -45,7 +46,7 @@ int main(int argc, char **argv){
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(sockfd < 0){
         perror(ERROR_SOCKET);
-		exit(1);
+		return EXIT_FAILURE;
 	}
 	printf(SUCESS_SOCKET);
 
@@ -57,7 +58,7 @@ int main(int argc, char **argv){
 	ret = bind(sockfd, (struct sockaddr*)&serverAddr, sizeof(serverAddr));
 	if(ret < 0){
         perror(ERROR_BIND);
-		exit(1);
+		return EXIT_FAILURE;
 	}
 
 	if(listen(sockfd, 10) == 0){
@@ -68,7 +69,7 @@ int main(int argc, char **argv){
 	while(1){
 		newSocket = accept(sockfd, (struct sockaddr*)&newAddr, &addr_size);
 		if(newSocket < 0){
-			exit(1);
+			return EXIT_FAILURE;
 		}
 		printf("Connection accepted from %s---%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
 
@@ -104,19 +105,17 @@ int hostname_to_ip(char * hostname , char* ip)
 		
 	if ( (he = gethostbyname( hostname ) ) == NULL) 
 	{
-		// get the host info
-		herror("gethostbyname");
-		return 1;
+		perror(ERROR_CONVERT_HOSTNAME);
+		return EXIT_FAILURE;
 	}
 
 	addr_list = (struct in_addr **) he->h_addr_list;
 	
 	for(i = 0; addr_list[i] != NULL; i++) 
 	{
-		//Return the first one;
 		strcpy(ip , inet_ntoa(*addr_list[i]) );
 		return 0;
 	}
 	
-	return 1;
+	return EXIT_FAILURE;
 }

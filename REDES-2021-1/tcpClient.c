@@ -5,7 +5,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
-#include<netdb.h>	//hostent
+#include <netdb.h>	
 #include <arpa/inet.h>
 
 #define ERROR_CONNECTION "Error on try connect on server\n"
@@ -14,6 +14,8 @@
 #define SUCESS_SOCKET "Socket create\n"
 #define SUCESS_DISCONECT "Bye\n"
 #define ERROR_DATA "Error on recieve data\n"
+#define ERROR_CONVERT_HOSTNAME "Error on convert hostname to ip address"
+
 
 int hostname_to_ip(char * hostname , char* ip);
 
@@ -37,7 +39,7 @@ int main(int argc, char **argv){
 	clientSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if(clientSocket < 0){
         perror(ERROR_SOCKET);
-		exit(1);
+		return EXIT_FAILURE;
 	}
 	printf(SUCESS_SOCKET);
 
@@ -52,7 +54,7 @@ int main(int argc, char **argv){
 	ret = connect(clientSocket, (struct sockaddr*)&serverAddr, sizeof(serverAddr));
 	if(ret < 0){
         perror(ERROR_CONNECTION);
-		exit(1);
+		return EXIT_FAILURE;
 	}
 	printf(SUCCESS_CONNETION);
     
@@ -66,7 +68,7 @@ int main(int argc, char **argv){
 		if(strcmp(buffer, "exit") == 0){
 			close(clientSocket);
 			printf(SUCCESS_CONNETION);
-			exit(1);
+			return EXIT_FAILURE;
 		}
 
         // READ
@@ -90,8 +92,7 @@ int hostname_to_ip(char * hostname , char* ip)
 		
 	if ( (he = gethostbyname( hostname ) ) == NULL) 
 	{
-		// get the host info
-		herror("gethostbyname");
+		perror(ERROR_CONVERT_HOSTNAME);
 		return 1;
 	}
 
@@ -104,5 +105,5 @@ int hostname_to_ip(char * hostname , char* ip)
 		return 0;
 	}
 	
-	return 1;
+	return EXIT_FAILURE;
 }

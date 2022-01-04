@@ -52,7 +52,8 @@ int main(int argc, char **argv){
 	while(1){
         // WRITE
 		printf("Client says: \t");
-		scanf("%s", &buffer[0]);
+		// scanf("%s", buffer);
+		gets(buffer);
 		send(clientSocket, buffer, strlen(buffer), 0);
 
 		if(strcmp(buffer, "exit") == 0){

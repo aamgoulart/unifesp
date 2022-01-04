@@ -29,10 +29,11 @@ int main(int argc, char **argv){
 
     if(argc != 3) { 
         printf("Use: %s <porta> <endereço server>\n", argv[0]);
+		return EXIT_FAILURE;
+
     }
 
 	hostname_to_ip(argv[2] , ip);
-	printf("%s resolved to %s" , argv[2] , ip);
 
     //SOCKET
 
@@ -61,8 +62,8 @@ int main(int argc, char **argv){
 	while(1){
         // WRITE
 		printf("Client says: \t");
-		// scanf("%s", buffer);
-		gets(buffer);
+		// gets(buffer);
+		fgets(buffer, 1024, stdin);
 		send(clientSocket, buffer, strlen(buffer), 0);
 
 		if(strcmp(buffer, "exit") == 0){

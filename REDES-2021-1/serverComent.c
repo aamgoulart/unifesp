@@ -37,55 +37,59 @@ int main(int argc, char **argv){
 	char ip[100];
 
     if(argc != 3) { 
-        printf("Use: %s <porta> <endereço server>\n", argv[0]);
+        printf("Use: %s <porta> <endereço server>\n", argv[0]); // tratamento de erro, caso usuario não utilize corretamente 
     }
 
-	hostname_to_ip(argv[2] , ip);
+	hostname_to_ip(argv[2] , ip); // funçãoq que criamos para realizar a conversão do nome para o endereço de IP correto
 
-	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-	if(sockfd < 0){
+	sockfd = socket(AF_INET, SOCK_STREAM, 0); // cria um socket , passando o domain, tipo e  prontocolo  que etsamos fazendo, no TCP
+	if(sockfd < 0){  // tratamento de erro  
         perror(ERROR_SOCKET);
 		return EXIT_FAILURE;
 	}
 	printf(SUCESS_SOCKET);
 
-	memset(&serverAddr, '\0', sizeof(serverAddr));
-	serverAddr.sin_family = AF_INET;
+	memset(&serverAddr, '\0', sizeof(serverAddr)); // realizar uma copia de ponteiro http://www.w3big.com/pt/cprogramming/c-function-memset.html
+	
+    // neste trecho setamos os valores basicos para o servidor, sendo eles a familia, porta e o endereço 
+    serverAddr.sin_family = AF_INET;
 	serverAddr.sin_port = htons(atoi(argv[1]));
 	serverAddr.sin_addr.s_addr = inet_addr(ip);
 
-	ret = bind(sockfd, (struct sockaddr*)&serverAddr, sizeof(serverAddr));
+	ret = bind(sockfd, (struct sockaddr*)&serverAddr, sizeof(serverAddr)); //. Este é o endereço onde os pacotes são recebidos. Os pacotes enviados pelo socket carregam isso como o endereço de origem, de modo que o outro host saberá para onde enviar seus pacotes. 
 	if(ret < 0){
         perror(ERROR_BIND);
 		return EXIT_FAILURE;
 	}
 
-	if(listen(sockfd, 10) == 0){
+	if(listen(sockfd, 10) == 0){ // prepara a conexão para o cliente
 		printf(WAITING_CLIENTE);
 	}
 
 
 	while(1){
-		newSocket = accept(sockfd, (struct sockaddr*)&newAddr, &addr_size);
+		newSocket = accept(sockfd, (struct sockaddr*)&newAddr, &addr_size); // aguarda a conexão do cliente
 		if(newSocket < 0){
 			return EXIT_FAILURE;
 		}
 		printf("Connection accepted from %s---%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
 
-		if((childpid = fork()) == 0){
+		if((childpid = fork()) == 0){ // duplico o proceso para receber mais clientes
 			close(sockfd);
 
 			while(1){
-				recv(newSocket, buffer, 1024, 0);
-				if(strcmp(buffer, "exit") == 0){
+				recv(newSocket, buffer, 1024, 0);    // neste caso o server esta lendo o que contém no buffer recebido da conexão com o cliente
+
+				if(strcmp(buffer, "exit") == 0){ // caso o usuario queira encerrar a conexão
 					printf("Disconnected from %s---%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
 					break;
 				}else{
-					printf("Client say: %s\n", buffer);
-					// gets(buffer); // pegamos o que o usuario quer enviar 
-					fgets(buffer, 1024, stdin);
-					send(newSocket, buffer, strlen(buffer), 0);
-					bzero(buffer, sizeof(buffer));
+					printf("Client %d say: %s\n",  ntohs(newAddr.sin_port), buffer);
+                    memset(buffer,0,sizeof(buffer));
+                    printf("Server says: \t");
+                    bzero(buffer, sizeof(buffer));
+                    gets(buffer); // pegamos o que o usuario quer enviar 
+					send(newSocket, buffer, strlen(buffer), 0); 
 				}
 			}
 		}

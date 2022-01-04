@@ -8,11 +8,11 @@
 #include <arpa/inet.h>
 
 #define ERROR_CONNECTION "Error on try connect on server\n"
-#define SUCCESS_CONNETION "Conect on server"
-#define ERROR_SOCKET "Error on create socker"
-#define SUCESS_SOCKET "Socket create"
-#define SUCESS_DISCONECT "Bye"
-#define ERROR_DATA "Error on recieve data"
+#define SUCCESS_CONNETION "Conect on server\n"
+#define ERROR_SOCKET "Error on create socker\n"
+#define SUCESS_SOCKET "Socket create\n"
+#define SUCESS_DISCONECT "Bye\n"
+#define ERROR_DATA "Error on recieve data\n"
 
 
 int main(int argc, char **argv){

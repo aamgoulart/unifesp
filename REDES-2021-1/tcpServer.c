@@ -42,6 +42,8 @@ int main(int argc, char **argv){
 
 	hostname_to_ip(argv[2] , ip);
 
+	printf("SERVER %s", ip);
+
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(sockfd < 0){
         perror(ERROR_SOCKET);
@@ -82,7 +84,6 @@ int main(int argc, char **argv){
 					break;
 				}else{
 					printf("Client say: %s\n", buffer);
-					// gets(buffer); // pegamos o que o usuario quer enviar 
 					fgets(buffer, 1024, stdin);
 					send(newSocket, buffer, strlen(buffer), 0);
 					bzero(buffer, sizeof(buffer));

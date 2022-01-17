@@ -62,7 +62,6 @@ int main(int argc, char **argv){
 	while(1){
         // WRITE
 		printf("Client says: \t");
-		// gets(buffer);
 		fgets(buffer, 1024, stdin);
 		send(clientSocket, buffer, strlen(buffer), 0);
 

@@ -15,7 +15,7 @@ void roda(){
     glBegin(GL_POLYGON);
         for (i=0;i<=8;i++) {
             angulo= 2 * PI * i / 8.0;
-            glVertex2f(0.09*cos(angulo), 0.09*sin(angulo)); //não deixei redondinho perfeito para podermos o efeito de giro
+            glVertex2f(0.09*cos(angulo), 0.09*sin(angulo)); 
         }
     glEnd ();
 }

@@ -1,0 +1,27 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Fluxo Vacinação",
+      "description": "Documentação da API do sistema Fluxo de Vacinação",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Doses",
+        "description": "Endpoint para recuperar dados sobre as Doses do IBGE"
+      },
+      {
+        "name": "Cidades",
+        "description": "Endpoint para recuperar dados sobre as Cidades"
+      }
+    ],
+    "schemes": ["https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"]
+  }

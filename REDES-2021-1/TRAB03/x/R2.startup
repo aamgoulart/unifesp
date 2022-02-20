@@ -1,0 +1,4 @@
+if config eth0 192.168.8.1/24
+if config eth1 10.0.0.5/30
+if config eth2 10.0.0.34/30
+if config eth3 10.0.0.2/30
